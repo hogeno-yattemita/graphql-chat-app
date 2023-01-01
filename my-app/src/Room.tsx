@@ -3,8 +3,8 @@ import gql from 'graphql-tag';
 import { useQuery, useMutation } from '@apollo/client';
 import { Chat, ChatContainer, Message, MessageReceived } from './components/room';
 
-let queuedMessages = []
-export const Room = ({ channel, name }) => {
+let queuedMessages : Array<any> = []
+export const Room = ({ channel: any, name: string }) => {
     const messagesEndRef = useRef(null)
     const [ text, setText ] = useState('');
 
@@ -26,7 +26,7 @@ export const Room = ({ channel, name }) => {
                 messages: [
                     ...data.room.messages,
                     ...queuedMessages.filter((queuedMessage) => (
-                        !data.room.messages.find((msg) => msg.id === queuedMessage.id)
+                        !data.room.messages.find((msg : any) => msg.id === queuedMessage.id)
                     )),
                 ],
             })
