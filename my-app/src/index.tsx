@@ -1,23 +1,3 @@
-//import React from 'react';
-//import ReactDOM from 'react-dom/client';
-//import './index.css';
-//import App from './App';
-//import reportWebVitals from './reportWebVitals';
-//
-//const root = ReactDOM.createRoot(
-//  document.getElementById('root') as HTMLElement
-//);
-//root.render(
-//  <React.StrictMode>
-//    <App />
-//  </React.StrictMode>
-//);
-//
-//// If you want to start measuring performance in your app, pass a function
-//// to log results (for example: reportWebVitals(console.log))
-//// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-//reportWebVitals();
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
@@ -53,8 +33,9 @@ const httpLink = new HttpLink({ uri: 'http://localhost:8085/query' });
 const link = split(
         // split based on operation type
     ({ query }) => {
-        const { kind, operation } = getMainDefinition(query);
-        return kind === 'OperationDefinition' && operation === 'subscription';
+        const { kind } = getMainDefinition(query);
+        // return kind === 'OperationDefinition' && operation === 'subscription';
+        return kind === 'OperationDefinition';
         },
     wsLink,
     httpLink,
@@ -65,14 +46,16 @@ const apolloClient = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
-if (module.hot) {
-    module.hot.accept('./App', () => {
-        const NextApp = require('./App').default;
-        render(<NextApp/>);
-    })
-}
 
-function render(component) {
+
+// if (module.hot) {
+//     module.hot.accept('./App', () => {
+//         const NextApp = require('./App').default;
+//         render(<NextApp/>);
+//     })
+// }
+
+function render(component : any) {
     ReactDOM.render(<ApolloProvider client={apolloClient}>
         {component}
     </ApolloProvider>, document.getElementById('root'));
