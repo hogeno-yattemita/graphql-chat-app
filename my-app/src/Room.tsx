@@ -3,9 +3,8 @@ import gql from 'graphql-tag';
 import { useQuery, useMutation } from '@apollo/client';
 import { Chat, ChatContainer, Message, MessageReceived } from './components/room';
 
-let queuedMessages : Array<any> = []
-let channel : any
-export const Room = ({ channel, name }) => {
+let queuedMessages : Array<any> = [];
+export const Room = (channel : any , name : any) => {
     const messagesEndRef = useRef(null)
     const [ text, setText ] = useState('');
 
@@ -52,7 +51,7 @@ export const Room = ({ channel, name }) => {
                     return prev;
                 }
 
-                if (prev.room.messages.find((msg) => msg.id === newMessage.id)) {
+                if (prev.room.messages.find((msg : any) => msg.id === newMessage.id)) {
                     return prev
                 }
 
@@ -62,7 +61,7 @@ export const Room = ({ channel, name }) => {
                             ...prev.room.messages,
                             ...queuedMessages.filter((queuedMessage) => (
                                 newMessage.id !== queuedMessage.id
-                                && !prev.room.messages.find((msg) => msg.id === queuedMessage.id)
+                                && !prev.room.messages.find((msg : any) => msg.id === queuedMessage.id)
                             )),
                             newMessage,
                         ],
@@ -94,7 +93,7 @@ export const Room = ({ channel, name }) => {
     return (<>
         <Chat>
             <ChatContainer>
-                {data.room.messages.map((msg) =>
+                {data.room.messages.map((msg: any) =>
                     msg.createdBy === name ? <Message key={msg.id}>
                         {msg.text}
                     </Message> : <MessageReceived key={msg.id}>
