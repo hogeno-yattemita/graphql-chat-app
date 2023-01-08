@@ -4,7 +4,9 @@ import { useQuery, useMutation } from '@apollo/client';
 import { Chat, ChatContainer, Message, MessageReceived } from './components/room';
 
 let queuedMessages : Array<any> = [];
-export const Room = (channel : any , name : any) => {
+export const Room = (tmp: { channel: string; name: string }) => {
+    let channel: string = tmp.channel
+    let name: string = tmp.name
     const messagesEndRef = useRef<null | HTMLDivElement>(null)
     const [ text, setText ] = useState('');
 
