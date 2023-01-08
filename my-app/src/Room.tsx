@@ -5,7 +5,7 @@ import { Chat, ChatContainer, Message, MessageReceived } from './components/room
 
 let queuedMessages : Array<any> = [];
 export const Room = (channel : any , name : any) => {
-    const messagesEndRef = useRef(null)
+    const messagesEndRef = useRef<null | HTMLDivElement>(null)
     const [ text, setText ] = useState('');
 
     const [ addMessage ] = useMutation(MUTATION, {
