@@ -1,12 +1,20 @@
 import styled from 'styled-components';
 
+export const RoomContainer = styled.div`
+    float: left;
+    margin-left: 200px;
+    height: 100%;
+    width: 100%;
+    background-color: #FFF8EA;
+`;
+
 export const Chat = styled.div`
     padding: 4px;
     margin: 0 0 12px;
-    max-width: 400px;
-    max-height: 400px;
+    width: 800px;
+    height: 400px;
     border: 1px solid #ccc;
-    background-color: #babdc6;
+    background-color: #815B5B;
     overflow-x: hidden;
     overflow-y: scroll;
     position: relative;
