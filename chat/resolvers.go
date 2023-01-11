@@ -93,8 +93,21 @@ func (r *resolver) getRoom(name string) *Chatroom {
 	return room.(*Chatroom)
 }
 
+func (r *resolver) getRooms(page int) ([]*Chatroom) {
+	rooms := make([]*Chatroom, 0)
+	r.Rooms.Range(func(_, v interface{}) bool {
+		rooms = append(rooms, v.(*Chatroom))
+		return true
+	})
+	return rooms
+}
+
 func (r *queryResolver) Room(ctx context.Context, name string) (*Chatroom, error) {
 	return r.getRoom(name), nil
+}
+
+func (r *queryResolver) Rooms(ctx context.Context, page int) ([]*Chatroom, error) {
+	return r.getRooms(page), nil
 }
 
 type subscriptionResolver struct{ *resolver }

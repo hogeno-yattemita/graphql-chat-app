@@ -12,6 +12,7 @@ type Message {
 
 type Query {
     room(name:String!): Chatroom
+    rooms(page:Int!): [Chatroom]
 }
 
 type Mutation {
