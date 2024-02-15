@@ -7,6 +7,7 @@ require (
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/gorilla/websocket v1.5.0
+	github.com/mattn/go-sqlite3 v1.14.16 // indirect
 	github.com/opentracing/basictracer-go v1.1.0 // indirect
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/rs/cors v1.8.3
@@ -15,6 +16,8 @@ require (
 	github.com/stretchr/testify v1.8.1
 	github.com/vektah/gqlparser/v2 v2.5.1
 	golang.org/x/tools v0.1.12
+	gorm.io/driver/sqlite v1.4.4
+	gorm.io/gorm v1.24.3
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600
 	sourcegraph.com/sourcegraph/appdash-data v0.0.0-20151005221446-73f23eafcf67 // indirect
 )

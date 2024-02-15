@@ -2,3 +2,5 @@
 graphqlでチャットを作ってみた
 
 
+requirement
+install sqlite3
